@@ -10,4 +10,5 @@ export const transactionSchema = z.object({
   categoryId: z.string().min(1, 'Selecione uma categoria'),
 });
 
-export type TransactionFormData = z.infer<typeof transactionSchema>;
+export type TransactionFormInput = z.input<typeof transactionSchema>;
+export type TransactionFormData = z.output<typeof transactionSchema>;

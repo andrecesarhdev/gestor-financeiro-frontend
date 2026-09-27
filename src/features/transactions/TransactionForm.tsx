@@ -1,6 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { transactionSchema, type TransactionFormData } from './transaction.schema';
+import {
+  transactionSchema,
+  type TransactionFormInput,
+  type TransactionFormData,
+} from './transaction.schema';
 import type { Transaction } from './transactions.service';
 import type { Category } from '../categories/categories.service';
 
@@ -24,7 +28,7 @@ export function TransactionForm({
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<TransactionFormData>({
+  } = useForm<TransactionFormInput, unknown, TransactionFormData>({
     resolver: zodResolver(transactionSchema),
     defaultValues: initialData
       ? {

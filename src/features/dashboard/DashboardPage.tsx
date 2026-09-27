@@ -84,7 +84,7 @@ export function DashboardPage() {
                   tick={{ fill: '#cbd5e1', fontSize: 12 }}
                 />
                 <Tooltip
-                  formatter={(value: number) => formatCurrency(value)}
+                  formatter={(value) => formatCurrency(Number(value ?? 0))}
                   contentStyle={{ backgroundColor: '#1e293b', border: 'none' }}
                 />
                 <Bar dataKey="total" radius={[0, 4, 4, 0]}>
@@ -115,7 +115,7 @@ export function DashboardPage() {
                   tick={{ fill: '#cbd5e1', fontSize: 12 }}
                 />
                 <Tooltip
-                  formatter={(value: number) => formatCurrency(value)}
+                  formatter={(value) => formatCurrency(Number(value ?? 0))}
                   contentStyle={{ backgroundColor: '#1e293b', border: 'none' }}
                 />
                 <Bar dataKey="total" radius={[0, 4, 4, 0]}>
