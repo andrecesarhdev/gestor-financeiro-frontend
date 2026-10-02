@@ -48,30 +48,36 @@ export function CategoryForm({
     <div className="fixed inset-0 flex items-center justify-center bg-black/50 px-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-sm rounded-lg bg-slate-800 p-6"
+        className="w-full max-w-sm rounded-lg bg-white p-6 dark:bg-slate-800"
       >
-        <h3 className="mb-4 text-lg font-semibold text-white">
+        <h3 className="mb-4 text-lg font-semibold text-slate-900 dark:text-white">
           {initialData ? 'Editar categoria' : 'Nova categoria'}
         </h3>
 
         <div className="mb-4">
-          <label className="mb-1 block text-sm text-slate-300">Nome</label>
+          <label className="mb-1 block text-sm text-slate-600 dark:text-slate-300">
+            Nome
+          </label>
           <input
             type="text"
             {...register('name')}
-            className="w-full rounded border border-slate-600 bg-slate-700 px-3 py-2 text-white"
+            className="w-full rounded border border-slate-300 bg-white px-3 py-2 text-slate-900 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
           />
           {errors.name && (
-            <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>
+            <p className="mt-1 text-sm text-red-500 dark:text-red-400">
+              {errors.name.message}
+            </p>
           )}
         </div>
 
         <div className="mb-4">
-          <label className="mb-1 block text-sm text-slate-300">Tipo</label>
+          <label className="mb-1 block text-sm text-slate-600 dark:text-slate-300">
+            Tipo
+          </label>
           <select
             value={selectedType}
             onChange={(e) => handleTypeChange(e.target.value as 'INCOME' | 'EXPENSE')}
-            className="w-full rounded border border-slate-600 bg-slate-700 px-3 py-2 text-white"
+            className="w-full rounded border border-slate-300 bg-white px-3 py-2 text-slate-900 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
           >
             <option value="EXPENSE">Despesa</option>
             <option value="INCOME">Receita</option>
@@ -79,7 +85,9 @@ export function CategoryForm({
         </div>
 
         <div className="mb-6">
-          <label className="mb-2 block text-sm text-slate-300">Cor</label>
+          <label className="mb-2 block text-sm text-slate-600 dark:text-slate-300">
+            Cor
+          </label>
           <div className="flex flex-wrap gap-2">
             {palette.map((color) => (
               <button
@@ -89,7 +97,7 @@ export function CategoryForm({
                 onClick={() => setValue('color', color.value)}
                 className={`h-9 w-9 rounded-full transition ${
                   selectedColor === color.value
-                    ? 'ring-2 ring-white ring-offset-2 ring-offset-slate-800'
+                    ? 'ring-2 ring-slate-900 ring-offset-2 ring-offset-white dark:ring-white dark:ring-offset-slate-800'
                     : ''
                 }`}
                 style={{ backgroundColor: color.value }}
@@ -98,7 +106,9 @@ export function CategoryForm({
           </div>
           <input type="hidden" {...register('color')} />
           {errors.color && (
-            <p className="mt-1 text-sm text-red-400">{errors.color.message}</p>
+            <p className="mt-1 text-sm text-red-500 dark:text-red-400">
+              {errors.color.message}
+            </p>
           )}
         </div>
 
@@ -106,7 +116,7 @@ export function CategoryForm({
           <button
             type="button"
             onClick={onCancel}
-            className="flex-1 rounded bg-slate-700 py-2 text-white hover:bg-slate-600"
+            className="flex-1 rounded bg-slate-200 py-2 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-white dark:hover:bg-slate-600"
           >
             Cancelar
           </button>

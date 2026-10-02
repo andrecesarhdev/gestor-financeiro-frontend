@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 html, body {
   overflow-x: hidden;
+}
+
+button:not(:disabled),
+[role='switch'],
+[role='button'] {
+  cursor: pointer;
 }

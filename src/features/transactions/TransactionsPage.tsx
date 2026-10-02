@@ -81,13 +81,15 @@ export function TransactionsPage() {
   }
 
   if (isLoading) {
-    return <p className="text-slate-400">Carregando...</p>;
+    return <p className="text-slate-500 dark:text-slate-400">Carregando...</p>;
   }
 
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-white">Transações</h2>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+          Transações
+        </h2>
         <button
           onClick={() => setIsFormOpen(true)}
           className="rounded bg-emerald-500 px-4 py-2 font-semibold text-white hover:bg-emerald-600"
@@ -96,11 +98,11 @@ export function TransactionsPage() {
         </button>
       </div>
 
-      <div className="overflow-hidden rounded-lg bg-slate-800">
+      <div className="overflow-hidden rounded-lg bg-white shadow-sm dark:bg-slate-800 dark:shadow-none">
         {transactions && transactions.length > 0 ? (
           <table className="w-full text-left">
             <thead>
-              <tr className="border-b border-slate-700 text-sm text-slate-400">
+              <tr className="border-b border-slate-200 text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">
                 <th className="px-4 py-3">Descrição</th>
                 <th className="px-4 py-3">Categoria</th>
                 <th className="px-4 py-3">Data</th>
@@ -110,10 +112,15 @@ export function TransactionsPage() {
             </thead>
             <tbody>
               {transactions.map((transaction) => (
-                <tr key={transaction.id} className="border-b border-slate-700/50">
-                  <td className="px-4 py-3 text-white">{transaction.description}</td>
+                <tr
+                  key={transaction.id}
+                  className="border-b border-slate-100 dark:border-slate-700/50"
+                >
+                  <td className="px-4 py-3 text-slate-900 dark:text-white">
+                    {transaction.description}
+                  </td>
                   <td className="px-4 py-3">
-                    <span className="inline-flex items-center gap-2 text-sm text-slate-300">
+                    <span className="inline-flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
                       <span
                         className="h-2.5 w-2.5 rounded-full"
                         style={{ backgroundColor: transaction.category.color }}
@@ -121,12 +128,14 @@ export function TransactionsPage() {
                       {transaction.category.name}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-sm text-slate-300">
+                  <td className="px-4 py-3 text-sm text-slate-600 dark:text-slate-300">
                     {formatDate(transaction.date)}
                   </td>
                   <td
                     className={`px-4 py-3 text-right font-medium ${
-                      transaction.type === 'INCOME' ? 'text-emerald-400' : 'text-red-400'
+                      transaction.type === 'INCOME'
+                        ? 'text-emerald-600 dark:text-emerald-400'
+                        : 'text-red-600 dark:text-red-400'
                     }`}
                   >
                     {transaction.type === 'INCOME' ? '+' : '-'}
@@ -135,13 +144,13 @@ export function TransactionsPage() {
                   <td className="px-4 py-3 text-right">
                     <button
                       onClick={() => setEditingTransaction(transaction)}
-                      className="mr-3 text-sm text-emerald-400 hover:underline"
+                      className="mr-3 text-sm text-emerald-600 hover:underline dark:text-emerald-400"
                     >
                       Editar
                     </button>
                     <button
                       onClick={() => setDeletingTransaction(transaction)}
-                      className="text-sm text-red-400 hover:underline"
+                      className="text-sm text-red-600 hover:underline dark:text-red-400"
                     >
                       Excluir
                     </button>
@@ -151,7 +160,9 @@ export function TransactionsPage() {
             </tbody>
           </table>
         ) : (
-          <p className="p-6 text-slate-400">Nenhuma transação registrada ainda.</p>
+          <p className="p-6 text-slate-500 dark:text-slate-400">
+            Nenhuma transação registrada ainda.
+          </p>
         )}
       </div>
 

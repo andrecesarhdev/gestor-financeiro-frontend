@@ -64,13 +64,15 @@ export function CategoriesPage() {
   }
 
   if (isLoading) {
-    return <p className="text-slate-400">Carregando...</p>;
+    return <p className="text-slate-500 dark:text-slate-400">Carregando...</p>;
   }
 
   return (
     <div>
       <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-white">Categorias</h2>
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+          Categorias
+        </h2>
         <button
           onClick={() => setIsFormOpen(true)}
           className="rounded bg-emerald-500 px-4 py-2 font-semibold text-white hover:bg-emerald-600"
@@ -83,7 +85,7 @@ export function CategoriesPage() {
         {categories?.map((category) => (
           <div
             key={category.id}
-            className="flex items-center justify-between rounded-lg bg-slate-800 p-4"
+            className="flex items-center justify-between rounded-lg bg-white p-4 shadow-sm dark:bg-slate-800 dark:shadow-none"
           >
             <div className="flex items-center gap-3">
               <span
@@ -91,8 +93,10 @@ export function CategoriesPage() {
                 style={{ backgroundColor: category.color }}
               />
               <div>
-                <p className="font-medium text-white">{category.name}</p>
-                <p className="text-xs text-slate-400">
+                <p className="font-medium text-slate-900 dark:text-white">
+                  {category.name}
+                </p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   {category.type === 'INCOME' ? 'Receita' : 'Despesa'}
                 </p>
               </div>
@@ -101,13 +105,13 @@ export function CategoriesPage() {
             <div className="flex gap-2">
               <button
                 onClick={() => setEditingCategory(category)}
-                className="text-sm text-emerald-400 hover:underline"
+                className="text-sm text-emerald-600 hover:underline dark:text-emerald-400"
               >
                 Editar
               </button>
               <button
                 onClick={() => setDeletingCategory(category)}
-                className="text-sm text-red-400 hover:underline"
+                className="text-sm text-red-600 hover:underline dark:text-red-400"
               >
                 Excluir
               </button>

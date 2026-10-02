@@ -44,58 +44,51 @@ export function TransactionForm({
   const selectedType = watch('type');
   const filteredCategories = categories.filter((c) => c.type === selectedType);
 
+  const inputClasses =
+    'w-full rounded border border-slate-300 bg-white px-3 py-2 text-slate-900 dark:border-slate-600 dark:bg-slate-700 dark:text-white';
+  const labelClasses = 'mb-1 block text-sm text-slate-600 dark:text-slate-300';
+  const errorClasses = 'mt-1 text-sm text-red-500 dark:text-red-400';
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/50 px-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-sm rounded-lg bg-slate-800 p-6"
+        className="w-full max-w-sm rounded-lg bg-white p-6 dark:bg-slate-800"
       >
-        <h3 className="mb-4 text-lg font-semibold text-white">
+        <h3 className="mb-4 text-lg font-semibold text-slate-900 dark:text-white">
           {initialData ? 'Editar transação' : 'Nova transação'}
         </h3>
 
         <div className="mb-4">
-          <label className="mb-1 block text-sm text-slate-300">Descrição</label>
-          <input
-            type="text"
-            {...register('description')}
-            className="w-full rounded border border-slate-600 bg-slate-700 px-3 py-2 text-white"
-          />
+          <label className={labelClasses}>Descrição</label>
+          <input type="text" {...register('description')} className={inputClasses} />
           {errors.description && (
-            <p className="mt-1 text-sm text-red-400">{errors.description.message}</p>
+            <p className={errorClasses}>{errors.description.message}</p>
           )}
         </div>
 
         <div className="mb-4">
-          <label className="mb-1 block text-sm text-slate-300">Valor</label>
+          <label className={labelClasses}>Valor</label>
           <input
             type="number"
             step="0.01"
             {...register('amount')}
-            className="w-full rounded border border-slate-600 bg-slate-700 px-3 py-2 text-white"
+            className={inputClasses}
           />
-          {errors.amount && (
-            <p className="mt-1 text-sm text-red-400">{errors.amount.message}</p>
-          )}
+          {errors.amount && <p className={errorClasses}>{errors.amount.message}</p>}
         </div>
 
         <div className="mb-4">
-          <label className="mb-1 block text-sm text-slate-300">Tipo</label>
-          <select
-            {...register('type')}
-            className="w-full rounded border border-slate-600 bg-slate-700 px-3 py-2 text-white"
-          >
+          <label className={labelClasses}>Tipo</label>
+          <select {...register('type')} className={inputClasses}>
             <option value="EXPENSE">Despesa</option>
             <option value="INCOME">Receita</option>
           </select>
         </div>
 
         <div className="mb-4">
-          <label className="mb-1 block text-sm text-slate-300">Categoria</label>
-          <select
-            {...register('categoryId')}
-            className="w-full rounded border border-slate-600 bg-slate-700 px-3 py-2 text-white"
-          >
+          <label className={labelClasses}>Categoria</label>
+          <select {...register('categoryId')} className={inputClasses}>
             <option value="">Selecione...</option>
             {filteredCategories.map((category) => (
               <option key={category.id} value={category.id}>
@@ -104,32 +97,26 @@ export function TransactionForm({
             ))}
           </select>
           {errors.categoryId && (
-            <p className="mt-1 text-sm text-red-400">{errors.categoryId.message}</p>
+            <p className={errorClasses}>{errors.categoryId.message}</p>
           )}
           {filteredCategories.length === 0 && (
-            <p className="mt-1 text-sm text-amber-400">
+            <p className="mt-1 text-sm text-amber-600 dark:text-amber-400">
               Nenhuma categoria de {selectedType === 'INCOME' ? 'receita' : 'despesa'} cadastrada ainda.
             </p>
           )}
         </div>
 
         <div className="mb-6">
-          <label className="mb-1 block text-sm text-slate-300">Data</label>
-          <input
-            type="date"
-            {...register('date')}
-            className="w-full rounded border border-slate-600 bg-slate-700 px-3 py-2 text-white"
-          />
-          {errors.date && (
-            <p className="mt-1 text-sm text-red-400">{errors.date.message}</p>
-          )}
+          <label className={labelClasses}>Data</label>
+          <input type="date" {...register('date')} className={inputClasses} />
+          {errors.date && <p className={errorClasses}>{errors.date.message}</p>}
         </div>
 
         <div className="flex gap-2">
           <button
             type="button"
             onClick={onCancel}
-            className="flex-1 rounded bg-slate-700 py-2 text-white hover:bg-slate-600"
+            className="flex-1 rounded bg-slate-200 py-2 text-slate-700 hover:bg-slate-300 dark:bg-slate-700 dark:text-white dark:hover:bg-slate-600"
           >
             Cancelar
           </button>
