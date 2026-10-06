@@ -3,6 +3,7 @@
 Aplicação web para gestão de finanças pessoais, construída com React, TypeScript e Tailwind CSS. Consome a API REST do Poupa+ e oferece uma interface completa para controle de receitas, despesas e visualização de relatórios financeiros.
 
 🔗 **Aplicação em produção:** [gestor-financeiro-frontend-flame.vercel.app](https://gestor-financeiro-frontend-flame.vercel.app/login)
+🔗 **Documentação da API (Swagger):** [gestor-financeiro-api-1369.onrender.com/docs](https://gestor-financeiro-api-1369.onrender.com/docs)
 🔗 **Repositório do backend:** [gestor-financeiro-backend](https://github.com/andrecesarhdev/gestor-financeiro-backend)
 
 > ⏳ **Primeiro acesso:** a API está hospedada no plano gratuito do Render, que entra em modo de espera após um período sem uso. O primeiro login pode levar até 1 minuto. Depois disso, a navegação fica rápida.
